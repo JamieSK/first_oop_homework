@@ -62,15 +62,15 @@ class TestSportsTeam < MiniTest::Test
 
   def test_push_new_player
     @sports_team.add_player!('LeBron James')
-    assert_equal(true, @sports_team.players.include?('LeBron James'))
+    assert(@sports_team.players.include?('LeBron James'))
   end
 
   def test_is_player__true
-    assert_equal(true, @sports_team.player?('Hooker'))
+    assert(@sports_team.player?('Hooker'))
   end
 
   def test_is_player__false
-    assert_equal(false, @sports_team.player?('Batsman'))
+    refute(@sports_team.player?('Batsman'))
   end
 
   def test_update_points__win
