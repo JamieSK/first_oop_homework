@@ -105,10 +105,11 @@ class Library
     @books.each do |book|
       return book if book[:title] == title
     end
+    nil
   end
 
   def rental_details(title)
-    list(title)[:rental_details]
+    list(title)[:rental_details] unless list(title).nil?
   end
 
   def add_book!(title)
@@ -123,6 +124,8 @@ class Library
 
   def change_renter!(title, renter, date)
     book = list(title)
+    return nil if book.nil?
+
     book[:rental_details][:student_name] = renter
     book[:rental_details][:date] = date
   end
